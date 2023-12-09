@@ -14,3 +14,10 @@ function logout() {
     // Setelah logout, arahkan kembali ke halaman index.js atau halaman login lainnya
     window.location.href = '../index.html'; // Gantilah 'index.js' dengan halaman tujuan logout Anda
 }
+function readWarung() {
+    window.location.href = '../warungList.html'; 
+}
+function readKaryawan() {
+    window.location.href = '../karyawanList.html';
+}
+
