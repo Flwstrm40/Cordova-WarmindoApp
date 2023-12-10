@@ -21,7 +21,7 @@ loginButton.addEventListener('click', async () => {
             console.log('Login berhasil:', data.user);
 
             // Redirect ke halaman dashboard atau lakukan operasi lainnya
-            window.location.href = '../dashboardE1.html';
+            window.location.href = '../dashboard.html';
         } else {
             // Login gagal, tampilkan pesan kesalahan
             console.error('Login gagal:', data.message);
