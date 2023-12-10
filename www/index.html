@@ -1,30 +1,88 @@
 <!DOCTYPE html>
 <html>
-
-<head>
+  <head>
     <title>Login Page</title>
     <!-- <link rel="stylesheet" type="text/css" href="../dist/output.css"> -->
     <!-- <link rel="stylesheet" type="text/css" href="css/styles.css"> -->
     <script src="https://cdn.tailwindcss.com"></script>
-</head>
 
-<body class="font-sans">
+    <style>
+    #exitPopup {
+        width: 280px;
+        position: fixed;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        background: #000;
+        color: #fff;
+        padding: 15px;
+        text-align: center;
+        border-radius: 10px;
+        display: none;
+    }
+    #exitPopup.show {
+        display: block;
+    }
+    #exitPopup h3 {
+        font-size: 26px;
+        margin: 0 0 20px;
+    }
+    #exitPopup button {
+        background-color: #fff;
+        color: #000;
+        padding: 10px;
+        border: 0;
+        border-radius: 5px;
+        min-width: 100px;
+    }
+    #exitPopup button:hover {
+        background: gray;
+    }
+
+    </style>
+  </head>
+
+  <body class="font-sans">
     <div class="container mx-auto mt-30">
-        <!-- <h2 class="text-2xl font-semibold mb-4 mt-10 text-center">Login Dulu Bang</h2> -->
-        <img
+      <!-- <h2 class="text-2xl font-semibold mb-4 mt-10 text-center">Login Dulu Bang</h2> -->
+      <img
         class="h-40 w-40 mx-auto mt-10"
         src="https://evermos.com/home/wp-content/uploads/2022/10/modern-dan-melokal_referensi-logo-warmindo-ciamik-dan-kekinian_10-referensi-logo-warmindo-ciamik-dan-kekinian.jpeg"
         alt="Logo"
       />
-        <form id="loginForm">
-            <div class="mx-8 flex flex-col justify-center mt-16 max-w-[100%]">
-                <label for="username" class="mb-2">Username:</label>
-                <input type="text" id="username" name="username" class="border p-2 mb-4" required>
-                <label for="password" class="mb-2">Password:</label>
-                <input type="password" id="password" name="password" class="border p-2 mb-4" required>
-                <button type="button" id="loginButton" class="bg-red-800 text-white p-2 rounded-md mt-5">Login</button>
-            </div>
-        </form>
+      <form id="loginForm">
+        <div class="mx-8 flex flex-col justify-center mt-16 max-w-[100%]">
+          <label for="username" class="mb-2">Username:</label>
+          <input
+            type="text"
+            id="username"
+            name="username"
+            class="border p-2 mb-4"
+            required
+          />
+          <label for="password" class="mb-2">Password:</label>
+          <input
+            type="password"
+            id="password"
+            name="password"
+            class="border p-2 mb-4"
+            required
+          />
+          <button
+            type="button"
+            id="loginButton"
+            class="bg-red-800 text-white p-2 rounded-md mt-5"
+          >
+            Login
+          </button>
+        </div>
+      </form>
+    </div>
+
+    <div id="exitPopup">
+        <h3>Keluar dari Aplikasi?</h3>
+        <button id="closePopup">No</button>
+        <button id="exitApp">Yes</button>
     </div>
 
     <!-- <div class="container">
@@ -37,11 +95,61 @@
             <button type="button" onclick="login()">Login</button>
         </form>
     </div> -->
-    
+
     <footer class="text-center text-gray-400 text-xs bottom-5 w-[100%] mt-8">
-        Version 1.0
+      Version 1.0
     </footer>
     <script src="js/index.js"></script>
-</body>
+    <!-- <script>
+      document.addEventListener("deviceready", onDeviceReady, false);
 
+      function onDeviceReady() {
+        document.addEventListener("backbutton", onBackKeyDown, false);
+      }
+
+      function onBackKeyDown(e) {
+
+        // Prompt the user with a confirmation dialog
+        navigator.notification.confirm(
+          "Are you sure you want to exit?",
+          onConfirm,
+          "Confirmation",
+          ["Yes", "No"]
+        );
+      }
+
+      function onConfirm(buttonIndex) {
+        if (buttonIndex === 1) {
+          // If the user clicks "Yes," exit the app
+          navigator.device.exitApp();
+        } else {
+          // If the user clicks "No," do nothing or handle it as needed
+        }
+      }
+    </script> -->
+    <script type="text/javascript">
+        function onDeviceReady() {
+            document.addEventListener("backbutton", onBackButton, false);
+        }
+        function onBackButton() {
+            exitPopup = document.getElementById("exitPopup");
+            closePopup = document.getElementById("closePopup");
+            exitApp = document.getElementById("exitApp");
+            exitPopup.classList.add("show");
+            closePopup.addEventListener("click", function() {
+                exitPopup.classList.remove("show");
+            });
+            exitApp.addEventListener("click", function() {
+                setTimeout(function() {
+                    navigator.app.exitApp();
+                }, 500);
+            });
+        }
+        document.addEventListener("deviceready", function() {
+            onDeviceReady();
+        });
+          
+    </script>
+
+  </body>
 </html>
