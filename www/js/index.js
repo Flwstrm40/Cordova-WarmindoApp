@@ -20,8 +20,19 @@ loginButton.addEventListener('click', async () => {
             // Login berhasil
             console.log('Login berhasil:', data.user);
 
-            // Redirect ke halaman dashboard atau lakukan operasi lainnya
-            window.location.href = '../dashboard.html';
+            // Access the user's role
+            const role = data.user.role.id_role;
+            console.log('Role:', role);
+
+            // Redirect based on the user's role
+            if (role === 'E1') {
+                // Redirect to dashboard for role 'E1'
+                window.location.href = '../dashboard.html';
+            } else {
+                // Redirect to a different page for other roles
+                // window.location.href = '#';
+                alert('Login Sementara Hanya untuk Role E1.');
+            }
         } else {
             // Login gagal, tampilkan pesan kesalahan
             console.error('Login gagal:', data.message);
