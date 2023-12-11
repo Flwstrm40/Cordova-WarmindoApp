@@ -39,6 +39,7 @@
   },
   "dependencies": {
     "autoprefixer": "^10.4.16",
+    "onsenui": "^2.12.8",
     "postcss": "^8.4.32",
     "postcss-cli": "^11.0.0"
   }

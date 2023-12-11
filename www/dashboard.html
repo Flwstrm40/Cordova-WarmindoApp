@@ -13,9 +13,11 @@
       nomodule
       src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"
     ></script>
+
+    
   </head>
 
-  <body class="font-sans">
+  <body class="font-sans overflow-hidden">
     <!-- Side nav -->
     <nav class="p-5 bg-red-800 text-white shadow md:flex md:items-center md:justify-between">
       <div class="flex justify-start items-center">
@@ -60,7 +62,193 @@
     </nav>
 
     <!-- Content -->
-    
+    <!-- Card -->
+    <div class=" flex max-w-full justify-start overflow-x-auto">
+
+      <div class="mt-5 max-w-full rounded-md bg-yellow-400 mx-5">
+        <div class="px-6 py-4 flex place-items-end">
+          <div id="jumlah-warung" class="font-bold text-6xl mb-2">8</div>
+          <p class="text-gray-700 text-base ml-3">
+            Jumlah Warung
+          </p>
+        </div>
+      </div>
+      <div class="mt-5 max-w-full rounded-md bg-yellow-400 mx-5">
+        <div class="px-6 py-4 flex place-items-end">
+          <div id="jumlah-transaksi" class="font-bold text-6xl mb-2">4587</div>
+          <p class="text-gray-700 text-base ml-3">
+            Jumlah Transaksi
+          </p>
+        </div>
+      </div>
+    </div>
+
+
+    <!-- Tab -->
+    <div class="min-h-screen flex overflow-auto max-w-full">
+      <div class="w-full mt-8 px-8 sm:px-0">
+        <div class="sm:w-screen sm:mx-auto">
+          <div
+            role="tablist"
+            aria-label="Tabs"
+            class="relative w-full mx-auto h-12 grid grid-cols-2 items-center px-[3xl] rounded-md bg-black overflow-hidden shadow-900/20"
+          >
+            <div class="absolute indicator bottom-0 w-[50%] top-0 left-0 rounded-md bg-red-800"></div>
+            <!-- Tab Title -->
+            <button
+              role="tab"
+              aria-selected="true"
+              aria-controls="panel-1"
+              id="tab-1"
+              tabindex="0"
+              class="relative block h-10 tab rounded-full"
+            >
+              <span class="text-white font-medium">Warung</span>
+            </button>
+            <button
+              role="tab"
+              aria-selected="false"
+              aria-controls="panel-2"
+              id="tab-2"
+              tabindex="-1"
+              class="relative block h-10 tab rounded-full"
+            >
+              <span class="text-white font-medium">Transaksi</span>
+            </button>
+          </div>
+
+          <!-- Tab Content -->
+          <div class="mt-6 relative">
+            <div
+              role="tabpanel"
+              id="panel-1"
+              class="tab-panel p-6 transition duration-300"
+            >
+              <h2 class="text-xl font-semibold text-gray-800">Warung tab panel</h2>
+              <p class="mt-4 text-gray-700 max-h-[47vh] overflow-y-auto mb-14">
+                Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam
+                voluptatum quod officia, quae voluptates, voluptate, quos
+                voluptatibus quia doloribus quibusdam quidem. Quisquam
+                voluptatum quod officia, quae voluptates, voluptate, quos
+                voluptatibus quia doloribus quibusdam quidem.
+                Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam
+                voluptatum quod officia, quae voluptates, voluptate, quos
+                voluptatibus quia doloribus quibusdam quidem. Quisquam
+                voluptatum quod officia, quae voluptates, voluptate, quos
+                voluptatibus quia doloribus quibusdam quidem.
+                Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam
+                voluptatum quod officia, quae voluptates, voluptate, quos
+                voluptatibus quia doloribus quibusdam quidem. Quisquam
+                voluptatum quod officia, quae voluptates, voluptate, quos
+                voluptatibus quia doloribus quibusdam quidem.
+                Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam
+                voluptatum quod officia, quae voluptates, voluptate, quos
+                voluptatibus quia doloribus quibusdam quidem. Quisquam
+                voluptatum quod officia, quae voluptates, voluptate, quos
+                voluptatibus quia doloribus quibusdam quidem.
+                Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam
+                voluptatum quod officia, quae voluptates, voluptate, quos
+                voluptatibus quia doloribus quibusdam quidem. Quisquam
+                voluptatum quod officia, quae voluptates, voluptate, quos
+                voluptatibus quia doloribus quibusdam quidem.
+                Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam
+                voluptatum quod officia, quae voluptates, voluptate, quos
+                voluptatibus quia doloribus quibusdam quidem. Quisquam
+                voluptatum quod officia, quae voluptates, voluptate, quos
+                voluptatibus quia doloribus quibusdam quidem.
+                Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam
+                voluptatum quod officia, quae voluptates, voluptate, quos
+                voluptatibus quia doloribus quibusdam quidem. Quisquam
+                voluptatum quod officia, quae voluptates, voluptate, quos
+                voluptatibus quia doloribus quibusdam quidem.
+                voluptatibus quia doloribus quibusdam quidem. Quisquam
+                voluptatum quod officia, quae voluptates, voluptate, quos
+                voluptatibus quia doloribus quibusdam quidem.
+                Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam
+                voluptatum quod officia, quae voluptates, voluptate, quos
+                voluptatibus quia doloribus quibusdam quidem. Quisquam
+                voluptatum quod officia, quae voluptates, voluptate, quos
+                voluptatibus quia doloribus quibusdam quidem.
+                Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam
+                voluptatum quod officia, quae voluptates, voluptate, quos
+                voluptatibus quia doloribus quibusdam quidem. Quisquam
+                voluptatum quod officia, quae voluptates, voluptate, quos
+                voluptatibus quia doloribus quibusdam quidem.
+                Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam
+                voluptatum quod officia, quae voluptates, voluptate, quos
+                voluptatibus quia doloribus quibusdam quidem. Quisquam
+                voluptatum quod officia, quae voluptates, voluptate, quos
+                voluptatibus quia doloribus quibusdam quidem.
+                Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam
+                voluptatum quod officia, quae voluptates, voluptate, quos
+                voluptatibus quia doloribus quibusdam quidem. Quisquam
+                voluptatum quod officia, quae voluptates, voluptate, quos
+                voluptatibus quia doloribus quibusdam quidem.
+                Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam
+                voluptatum quod officia, quae voluptates, voluptate, quos
+                voluptatibus quia doloribus quibusdam quidem. Quisquam
+                voluptatum quod officia, quae voluptates, voluptate, quos
+                voluptatibus quia doloribus quibusdam quidem.
+                Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam
+                voluptatum quod officia, quae voluptates, voluptate, quos
+                voluptatibus quia doloribus quibusdam quidem. Quisquam
+                voluptatum quod officia, quae voluptates, voluptate, quos
+                voluptatibus quia doloribus quibusdam quidem.
+                voluptatibus quia doloribus quibusdam quidem. Quisquam
+                voluptatum quod officia, quae voluptates, voluptate, quos
+                voluptatibus quia doloribus quibusdam quidem.
+                Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam
+                voluptatum quod officia, quae voluptates, voluptate, quos
+                voluptatibus quia doloribus quibusdam quidem. Quisquam
+                voluptatum quod officia, quae voluptates, voluptate, quos
+                voluptatibus quia doloribus quibusdam quidem.
+                Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam
+                voluptatum quod officia, quae voluptates, voluptate, quos
+                voluptatibus quia doloribus quibusdam quidem. Quisquam
+                voluptatum quod officia, quae voluptates, voluptate, quos
+                voluptatibus quia doloribus quibusdam quidem.
+                Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam
+                voluptatum quod officia, quae voluptates, voluptate, quos
+                voluptatibus quia doloribus quibusdam quidem. Quisquam
+                voluptatum quod officia, quae voluptates, voluptate, quos
+                voluptatibus quia doloribus quibusdam quidem.
+                Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam
+                voluptatum quod officia, quae voluptates, voluptate, quos
+                voluptatibus quia doloribus quibusdam quidem. Quisquam
+                voluptatum quod officia, quae voluptates, voluptate, quos
+                voluptatibus quia doloribus quibusdam quidem.
+                Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam
+                voluptatum quod officia, quae voluptates, voluptate, quos
+                voluptatibus quia doloribus quibusdam quidem. Quisquam
+                voluptatum quod officia, quae voluptates, voluptate, quos
+                voluptatibus quia doloribus quibusdam quidem.
+                Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam
+                voluptatum quod officia, quae voluptates, voluptate, quos
+                voluptatibus quia doloribus quibusdam quidem. Quisquam
+                voluptatum quod officia, quae voluptates, voluptate, quos
+                voluptatibus quia doloribus quibusdam quidem.
+              </p>
+            </div>
+            <div
+              role="tabpanel"
+              id="panel-2"
+              class="absolute top-0 invisible opacity-0 tab-panel p-6 transition duration-300"
+            >
+              <h2 class="text-xl font-semibold text-gray-800">Transaksi tab panel</h2>
+              <p class="mt-4 text-gray-700  max-h-[47vh] overflow-y-auto mb-14">
+                Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam
+                voluptatum quod officia, quae voluptates, voluptate, quos
+                voluptatibus quia doloribus quibusdam quidem. Quisquam
+                voluptatum quod officia, quae voluptates, voluptate, quos
+                voluptatibus quia doloribus quibusdam quidem.
+              </p>
+            </div>
+          </div>
+
+
+        </div>
+      </div>
+    </div>
 
 
 
@@ -73,14 +261,46 @@
         if (e.name === "menu-outline") {
           e.name = "close";
           list.classList.remove("top-[80px]");
-          list.classList.add("top-[60px]", "opacity-100");
+          list.classList.add("top-[60px]", "opacity-100", "z-50");
           list.classList.remove("opacity-0");
         } else {
           e.name = "menu-outline";
-          list.classList.remove("top-[60px]", "opacity-100");
+          list.classList.remove("top-[60px]", "opacity-100", "z-50");
           list.classList.add("top-[80px]", "opacity-0");
         }
       }
+    </script>
+    <script>
+      let tabs = document.querySelectorAll(".tab");
+      let indicator = document.querySelector(".indicator");
+      let panels = document.querySelectorAll(".tab-panel");
+
+      indicator.style.width = tabs[0].getBoundingClientRect().width + "px";
+      indicator.style.left = tabs[0].getBoundingClientRect().left - tabs[0].parentElement.getBoundingClientRect().left + "px";
+
+      tabs.forEach(tab => {
+          tab.addEventListener("click", () => {
+            let tabTarget = tab.getAttribute("aria-controls");
+
+            indicator.style.width = tab.getBoundingClientRect().width + "px";
+            indicator.style.left = tab.getBoundingClientRect().left - tab.parentElement.getBoundingClientRect().left + "px";
+
+            panels.forEach(panel => {
+              if (panel.getAttribute("id") === tabTarget) {
+                panel.classList.remove("invisible", "opacity-0");
+                panel.classList.add("visible", "opacity-100", );
+                panel.setAttribute("aria-hidden", "false");
+                panel.setAttribute("tabindex", "0");
+              } else {
+                panel.classList.remove("visible", "opacity-100");
+                panel.classList.add("invisible", "opacity-0");
+                panel.setAttribute("aria-hidden", "true");
+                panel.setAttribute("tabindex", "-1");
+              }
+            });
+        });
+      })
+
     </script>
   </body>
 </html>
