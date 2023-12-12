@@ -1,306 +1,302 @@
-<!DOCTYPE html>
-<html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Dashboard</title>
-    <script src="https://cdn.tailwindcss.com"></script>
-    <script
-      type="module"
-      src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"
-    ></script>
-    <script
-      nomodule
-      src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"
-    ></script>
+  <!DOCTYPE html>
+  <html lang="en">
+    <head>
+      <meta charset="UTF-8" />
+      <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+      <title>Dashboard</title>
+      <script src="https://cdn.tailwindcss.com"></script>
+      <script
+        type="module"
+        src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"
+      ></script>
+      <script
+        nomodule
+        src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"
+      ></script>
 
-    
-  </head>
+      
+    </head>
 
-  <body class="font-sans overflow-hidden">
-    <!-- Side nav -->
-    <nav class="p-5 bg-red-800 text-white shadow md:flex md:items-center md:justify-between">
-      <div class="flex justify-start items-center">
-          <span class="text-3xl cursor-pointer mx-2 md:hidden block">
-            <ion-icon name="menu-outline" onclick="Menu(this)"></ion-icon>
+    <body class="font-sans overflow-hidden">
+      <!-- Side nav -->
+      <nav class="p-5 bg-red-800 text-white shadow md:flex md:items-center md:justify-between ">
+        <div class="flex justify-start items-center">
+            <span class="text-3xl cursor-pointer mx-2 md:hidden block">
+              <ion-icon name="menu-outline" onclick="Menu(this)"></ion-icon>
+            </span>
+          <span class="text-xl font-sans ml-5">
+            Dashboard
           </span>
-        <span class="text-xl font-sans ml-5">
-          Dashboard
-        </span>
-           
-      </div>
-
-      <ul
-        class="md:flex md:items-center z-[-1] md:z-auto md:static absolute bg-red-800 text-white w-full left-0 md:w-auto md:py-0 py-4 md:pl-0 pl-7 md:opacity-100 opacity-0 top-[-400px] transition-all ease-in duration-500"
-      >
-        <li class="mx-4 my-6 md:my-0  flex items-center">
-            <ion-icon name="file-tray-full-outline"></ion-icon>
-          <a
-            href="dashboard.html"
-            class="hover:text-gray-300 block px-2 text-white py-1 rounded"
-            >Dashboard</a
-          >
-        </li>
-        <li class="mx-4 my-6 md:my-0  flex items-center">
-            <ion-icon name="person-outline"></ion-icon>
-          <a
-            href="userManagement.html"
-            class="hover:text-gray-300 block px-2 text-white py-1 rounded"
-            >Manajemen Akun</a
-          >
-        </li>
-        <li class="mx-4 my-6 md:my-0  flex items-center">
-            <ion-icon name="ribbon-outline"></ion-icon>
-          <a
-            href="roleManagement.html"
-            class="hover:text-gray-300 block px-2 text-white py-1 rounded"
-            >Manajemen Role</a
-          >
-        </li class="mx-4 my-6 md:my-0 pb-5">
-        <button class="bg-white hover:bg-gray-300 text-black px-4 py-2 rounded-md" onclick="logout()">Logout</button>
-      </ul>
-    </nav>
-
-    <!-- Content -->
-    <!-- Card -->
-    <div class=" flex max-w-full justify-start overflow-x-auto">
-
-      <div class="mt-5 max-w-full rounded-md bg-yellow-400 mx-5">
-        <div class="px-6 py-4 flex place-items-end">
-          <div id="jumlah-warung" class="font-bold text-6xl mb-2">8</div>
-          <p class="text-gray-700 text-base ml-3">
-            Jumlah Warung
-          </p>
+            
         </div>
-      </div>
-      <div class="mt-5 max-w-full rounded-md bg-yellow-400 mx-5">
-        <div class="px-6 py-4 flex place-items-end">
-          <div id="jumlah-transaksi" class="font-bold text-6xl mb-2">4587</div>
-          <p class="text-gray-700 text-base ml-3">
-            Jumlah Transaksi
-          </p>
-        </div>
-      </div>
-    </div>
 
+        <ul
+          class="md:flex md:items-center z-[-1] md:z-auto md:static absolute bg-red-800 text-white w-full left-0 md:w-auto md:py-0 py-4 md:pl-0 pl-7 md:opacity-100 opacity-0 top-[-400px] transition-all ease-in duration-500"
+        >
+          <li class="mx-4 my-6 md:my-0  flex items-center">
+              <ion-icon name="file-tray-full-outline"></ion-icon>
+            <a
+              href="dashboard.html"
+              class="hover:text-gray-300 block px-2 text-white py-1 rounded"
+              >Dashboard</a
+            >
+          </li>
+          <li class="mx-4 my-6 md:my-0  flex items-center">
+              <ion-icon name="person-outline"></ion-icon>
+            <a
+              href="userManagement.html"
+              class="hover:text-gray-300 block px-2 text-white py-1 rounded"
+              >Manajemen Akun</a
+            >
+          </li>
+          <li class="mx-4 my-6 md:my-0  flex items-center">
+              <ion-icon name="ribbon-outline"></ion-icon>
+            <a
+              href="roleManagement.html"
+              class="hover:text-gray-300 block px-2 text-white py-1 rounded"
+              >Manajemen Role</a
+            >
+          </li class="mx-4 my-6 md:my-0 pb-5">
+          <button class="bg-white hover:bg-gray-300 text-black px-4 py-2 rounded-md" onclick="logout()">Logout</button>
+        </ul>
+      </nav>
 
-    <!-- Tab -->
-    <div class="min-h-screen flex overflow-auto max-w-full">
-      <div class="w-full mt-8 px-8 sm:px-0">
-        <div class="sm:w-screen sm:mx-auto">
-          <div
-            role="tablist"
-            aria-label="Tabs"
-            class="relative w-full mx-auto h-12 grid grid-cols-2 items-center px-[3xl] rounded-md bg-black overflow-hidden shadow-900/20"
-          >
-            <div class="absolute indicator bottom-0 w-[50%] top-0 left-0 rounded-md bg-red-800"></div>
-            <!-- Tab Title -->
-            <button
-              role="tab"
-              aria-selected="true"
-              aria-controls="panel-1"
-              id="tab-1"
-              tabindex="0"
-              class="relative block h-10 tab rounded-full"
-            >
-              <span class="text-white font-medium">Warung</span>
-            </button>
-            <button
-              role="tab"
-              aria-selected="false"
-              aria-controls="panel-2"
-              id="tab-2"
-              tabindex="-1"
-              class="relative block h-10 tab rounded-full"
-            >
-              <span class="text-white font-medium">Transaksi</span>
-            </button>
+      <!-- Content -->
+      <!-- Card -->
+      <div class=" flex max-w-full justify-start overflow-x-auto overflow-y-auto mb-5">
+
+        <div class="mt-5 max-w-full rounded-md bg-yellow-400 mx-5">
+          <div class="px-6 py-4 flex place-items-end">
+            <div id="jumlah-warung" class="font-bold text-6xl mb-2">-</div>
+            <p class="text-gray-700 text-base ml-3">
+              Jumlah Warung
+            </p>
           </div>
-
-          <!-- Tab Content -->
-          <div class="mt-6 relative">
-            <div
-              role="tabpanel"
-              id="panel-1"
-              class="tab-panel p-6 transition duration-300"
-            >
-              <h2 class="text-xl font-semibold text-gray-800">Warung tab panel</h2>
-              <p class="mt-4 text-gray-700 max-h-[47vh] overflow-y-auto mb-14">
-                Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam
-                voluptatum quod officia, quae voluptates, voluptate, quos
-                voluptatibus quia doloribus quibusdam quidem. Quisquam
-                voluptatum quod officia, quae voluptates, voluptate, quos
-                voluptatibus quia doloribus quibusdam quidem.
-                Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam
-                voluptatum quod officia, quae voluptates, voluptate, quos
-                voluptatibus quia doloribus quibusdam quidem. Quisquam
-                voluptatum quod officia, quae voluptates, voluptate, quos
-                voluptatibus quia doloribus quibusdam quidem.
-                Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam
-                voluptatum quod officia, quae voluptates, voluptate, quos
-                voluptatibus quia doloribus quibusdam quidem. Quisquam
-                voluptatum quod officia, quae voluptates, voluptate, quos
-                voluptatibus quia doloribus quibusdam quidem.
-                Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam
-                voluptatum quod officia, quae voluptates, voluptate, quos
-                voluptatibus quia doloribus quibusdam quidem. Quisquam
-                voluptatum quod officia, quae voluptates, voluptate, quos
-                voluptatibus quia doloribus quibusdam quidem.
-                Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam
-                voluptatum quod officia, quae voluptates, voluptate, quos
-                voluptatibus quia doloribus quibusdam quidem. Quisquam
-                voluptatum quod officia, quae voluptates, voluptate, quos
-                voluptatibus quia doloribus quibusdam quidem.
-                Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam
-                voluptatum quod officia, quae voluptates, voluptate, quos
-                voluptatibus quia doloribus quibusdam quidem. Quisquam
-                voluptatum quod officia, quae voluptates, voluptate, quos
-                voluptatibus quia doloribus quibusdam quidem.
-                Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam
-                voluptatum quod officia, quae voluptates, voluptate, quos
-                voluptatibus quia doloribus quibusdam quidem. Quisquam
-                voluptatum quod officia, quae voluptates, voluptate, quos
-                voluptatibus quia doloribus quibusdam quidem.
-                voluptatibus quia doloribus quibusdam quidem. Quisquam
-                voluptatum quod officia, quae voluptates, voluptate, quos
-                voluptatibus quia doloribus quibusdam quidem.
-                Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam
-                voluptatum quod officia, quae voluptates, voluptate, quos
-                voluptatibus quia doloribus quibusdam quidem. Quisquam
-                voluptatum quod officia, quae voluptates, voluptate, quos
-                voluptatibus quia doloribus quibusdam quidem.
-                Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam
-                voluptatum quod officia, quae voluptates, voluptate, quos
-                voluptatibus quia doloribus quibusdam quidem. Quisquam
-                voluptatum quod officia, quae voluptates, voluptate, quos
-                voluptatibus quia doloribus quibusdam quidem.
-                Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam
-                voluptatum quod officia, quae voluptates, voluptate, quos
-                voluptatibus quia doloribus quibusdam quidem. Quisquam
-                voluptatum quod officia, quae voluptates, voluptate, quos
-                voluptatibus quia doloribus quibusdam quidem.
-                Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam
-                voluptatum quod officia, quae voluptates, voluptate, quos
-                voluptatibus quia doloribus quibusdam quidem. Quisquam
-                voluptatum quod officia, quae voluptates, voluptate, quos
-                voluptatibus quia doloribus quibusdam quidem.
-                Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam
-                voluptatum quod officia, quae voluptates, voluptate, quos
-                voluptatibus quia doloribus quibusdam quidem. Quisquam
-                voluptatum quod officia, quae voluptates, voluptate, quos
-                voluptatibus quia doloribus quibusdam quidem.
-                Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam
-                voluptatum quod officia, quae voluptates, voluptate, quos
-                voluptatibus quia doloribus quibusdam quidem. Quisquam
-                voluptatum quod officia, quae voluptates, voluptate, quos
-                voluptatibus quia doloribus quibusdam quidem.
-                voluptatibus quia doloribus quibusdam quidem. Quisquam
-                voluptatum quod officia, quae voluptates, voluptate, quos
-                voluptatibus quia doloribus quibusdam quidem.
-                Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam
-                voluptatum quod officia, quae voluptates, voluptate, quos
-                voluptatibus quia doloribus quibusdam quidem. Quisquam
-                voluptatum quod officia, quae voluptates, voluptate, quos
-                voluptatibus quia doloribus quibusdam quidem.
-                Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam
-                voluptatum quod officia, quae voluptates, voluptate, quos
-                voluptatibus quia doloribus quibusdam quidem. Quisquam
-                voluptatum quod officia, quae voluptates, voluptate, quos
-                voluptatibus quia doloribus quibusdam quidem.
-                Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam
-                voluptatum quod officia, quae voluptates, voluptate, quos
-                voluptatibus quia doloribus quibusdam quidem. Quisquam
-                voluptatum quod officia, quae voluptates, voluptate, quos
-                voluptatibus quia doloribus quibusdam quidem.
-                Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam
-                voluptatum quod officia, quae voluptates, voluptate, quos
-                voluptatibus quia doloribus quibusdam quidem. Quisquam
-                voluptatum quod officia, quae voluptates, voluptate, quos
-                voluptatibus quia doloribus quibusdam quidem.
-                Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam
-                voluptatum quod officia, quae voluptates, voluptate, quos
-                voluptatibus quia doloribus quibusdam quidem. Quisquam
-                voluptatum quod officia, quae voluptates, voluptate, quos
-                voluptatibus quia doloribus quibusdam quidem.
-                Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam
-                voluptatum quod officia, quae voluptates, voluptate, quos
-                voluptatibus quia doloribus quibusdam quidem. Quisquam
-                voluptatum quod officia, quae voluptates, voluptate, quos
-                voluptatibus quia doloribus quibusdam quidem.
-              </p>
-            </div>
-            <div
-              role="tabpanel"
-              id="panel-2"
-              class="absolute top-0 invisible opacity-0 tab-panel p-6 transition duration-300"
-            >
-              <h2 class="text-xl font-semibold text-gray-800">Transaksi tab panel</h2>
-              <p class="mt-4 text-gray-700  max-h-[47vh] overflow-y-auto mb-14">
-                Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam
-                voluptatum quod officia, quae voluptates, voluptate, quos
-                voluptatibus quia doloribus quibusdam quidem. Quisquam
-                voluptatum quod officia, quae voluptates, voluptate, quos
-                voluptatibus quia doloribus quibusdam quidem.
-              </p>
-            </div>
+        </div>
+        <div class="mt-5 max-w-full rounded-md bg-yellow-400 mx-5">
+          <div class="px-6 py-4 flex place-items-end">
+            <div id="jumlah-transaksi" class="font-bold text-6xl mb-2">-</div>
+            <p class="text-gray-700 text-base ml-3">
+              Jumlah Transaksi
+            </p>
           </div>
-
-
         </div>
       </div>
-    </div>
+
+
+      <!-- Tab -->
+      <div class="min-h-screen flex overflow-auto max-w-full max-h-screen fixed w-full">
+        <div class="w-full px-8 sm:px-0">
+          <div class="sm:w-full sm:mx-auto">
+            <div
+              role="tablist"
+              aria-label="Tabs"
+              class="relative w-full mx-auto h-12 grid grid-cols-2 items-center px-[3xl] rounded-md bg-black overflow-hidden shadow-900/20"
+            >
+              <div class="absolute indicator bottom-0 w-[50%] top-0 left-0 rounded-md bg-red-800"></div>
+              <!-- Tab Title -->
+              <button
+                role="tab"
+                aria-selected="true"
+                aria-controls="panel-1"
+                id="tab-1"
+                tabindex="0"
+                class="relative block h-10 tab rounded-full"
+              >
+                <span class="text-white font-medium">Warung</span>
+              </button>
+              <button
+                role="tab"
+                aria-selected="false"
+                aria-controls="panel-2"
+                id="tab-2"
+                tabindex="-1"
+                class="relative block h-10 tab rounded-full"
+              >
+                <span class="text-white font-medium">Transaksi</span>
+              </button>
+            </div>
+
+            <!-- Tab Content -->
+            <div class="mt-0 relative">
+              <div
+                role="tabpanel"
+                id="panel-1"
+                class="tab-panel p-6 transition duration-300"
+              >
+                <div class="mt-0 text-gray-700 max-h-[47vh] h-[100%] overflow-y-auto">
+                  
+                </div>
+              </div>
+              <div
+                role="tabpanel"
+                id="panel-2"
+                class="absolute top-0 invisible opacity-0 tab-panel p-6 transition duration-300"
+              >
+                <div class="mt-0 text-gray-700  max-h-full overflow-y-auto overflow-x-auto">
+             
+                </div>
+              </div>
+            </div>
+
+
+          </div>
+        </div>
+      </div>
 
 
 
-    <!-- Script JS -->
-    <script src="js/dashboard.js"></script>
-    <script>
-      function Menu(e) {
-        let list = document.querySelector("ul");
+      <!-- Script JS -->
+      <script src="js/dashboard.js"></script>
+      <script>
+        function Menu(e) {
+          let list = document.querySelector("ul");
 
-        if (e.name === "menu-outline") {
-          e.name = "close";
-          list.classList.remove("top-[80px]");
-          list.classList.add("top-[60px]", "opacity-100", "z-50");
-          list.classList.remove("opacity-0");
-        } else {
-          e.name = "menu-outline";
-          list.classList.remove("top-[60px]", "opacity-100", "z-50");
-          list.classList.add("top-[80px]", "opacity-0");
+          if (e.name === "menu-outline") {
+            e.name = "close";
+            list.classList.remove("top-[80px]");
+            list.classList.add("top-[60px]", "opacity-100", "z-50");
+            list.classList.remove("opacity-0");
+          } else {
+            e.name = "menu-outline";
+            list.classList.remove("top-[60px]", "opacity-100", "z-50");
+            list.classList.add("top-[80px]", "opacity-0");
+          }
         }
-      }
-    </script>
-    <script>
-      let tabs = document.querySelectorAll(".tab");
-      let indicator = document.querySelector(".indicator");
-      let panels = document.querySelectorAll(".tab-panel");
 
-      indicator.style.width = tabs[0].getBoundingClientRect().width + "px";
-      indicator.style.left = tabs[0].getBoundingClientRect().left - tabs[0].parentElement.getBoundingClientRect().left + "px";
-
-      tabs.forEach(tab => {
-          tab.addEventListener("click", () => {
-            let tabTarget = tab.getAttribute("aria-controls");
-
-            indicator.style.width = tab.getBoundingClientRect().width + "px";
-            indicator.style.left = tab.getBoundingClientRect().left - tab.parentElement.getBoundingClientRect().left + "px";
-
-            panels.forEach(panel => {
-              if (panel.getAttribute("id") === tabTarget) {
-                panel.classList.remove("invisible", "opacity-0");
-                panel.classList.add("visible", "opacity-100", );
-                panel.setAttribute("aria-hidden", "false");
-                panel.setAttribute("tabindex", "0");
-              } else {
-                panel.classList.remove("visible", "opacity-100");
-                panel.classList.add("invisible", "opacity-0");
-                panel.setAttribute("aria-hidden", "true");
-                panel.setAttribute("tabindex", "-1");
-              }
-            });
+        async function fetchData(url) {
+          try {
+            const response = await fetch(url);
+            const data = await response.json();
+            return data;
+          } catch (error) {
+            console.error('Error fetching data:', error.message);
+            return null;
+          }
+        }
+      
+        async function populateWarungCards() {
+          try {
+            const warungData = await fetchData('https://cordova-warmindo-api.vercel.app/warung');
+            const warungContainer = document.getElementById('panel-1');
+        
+            if (warungData && Array.isArray(warungData.warung) && warungContainer) {
+              warungData.warung.forEach(warung => {
+                // Create elements for warung details and append them to the card
+                const warungCard = document.createElement('div');
+                warungCard.classList.add('flex', 'items-center', 'max-w-full', 'bg-white', 'p-6', 'rounded-lg', 'shadow-md', 'mt-5', 'border', 'border-solid', 'border-gray-300');
+        
+                // Create and append other elements for warung details (e.g., image, name, ID)
+                const warungLogo = document.createElement('img');
+                warungLogo.src = warung.logo;
+                warungLogo.alt = 'Warung Logo';
+                warungLogo.classList.add('w-16', 'h-16', 'rounded-full', 'mr-6');
+                warungCard.appendChild(warungLogo);
+        
+                const warungDetails = document.createElement('div');
+                // Populate warung details
+                warungDetails.innerHTML = `
+                  <h2 class="text-xl font-semibold text-gray-800">${warung.nama_warung}</h2>
+                  <p class="text-gray-600">ID: <span class="font-bold">${warung.id_warung}</span></p>
+                  <p class="text-gray-600">Lokasi: <span class="font-bold">${warung.lokasi}</span></p>
+                  <!-- Other Warung Details -->
+                  <!-- Add more details as needed -->
+                `;
+                warungCard.appendChild(warungDetails);
+        
+                // Append the warung card to the warung container
+                warungContainer.appendChild(warungCard);
+              });
+            } else {
+              console.error('Invalid or empty warung data:', warungData);
+            }
+          } catch (error) {
+            console.error('Error fetching warung data:', error.message);
+          }
+        }
+        
+        
+      
+        async function populateTransaksiCards() {
+          try {
+            const transaksiData = await fetchData('https://cordova-warmindo-api.vercel.app/transaksi');
+            const transaksiContainer = document.getElementById('panel-2');
+        
+            if (transaksiData && transaksiData.transaksi && transaksiData.transaksi.length > 0 && transaksiContainer) {
+              // Iterate over each transaksi and create cards
+              transaksiData.transaksi.forEach(transaksi => {
+                // Create elements for transaksi details and append them to the card
+                const transaksiCard = document.createElement('div');
+                transaksiCard.classList.add('flex', 'items-center', 'max-w-full', 'bg-white', 'p-6', 'rounded-md', 'shadow-md', 'mt-5', 'border', 'border-solid', 'border-gray-300');
+        
+                // Create and append elements for transaksi details
+                const transaksiDetails = document.createElement('div');
+                // Populate transaksi details
+                transaksiDetails.innerHTML = `
+                  <h2 class="text-xl font-semibold text-gray-800">Transaksi Details</h2>
+                  <p class="text-gray-600">ID: <span class="font-bold">${transaksi.id_transaksi}</span></p>
+                  <p class="text-gray-600">Tanggal: <span class="font-bold">${transaksi.tanggal}</span></p>
+                  <p class="text-gray-600">Waktu: <span class="font-bold">${transaksi.waktu}</span></p>
+                  <p class="text-gray-600">Nama Pelanggan: <span class="font-bold">${transaksi.nama_pelanggan || '-'}</span></p>
+                  <p class="text-gray-600">Total: $<span class="font-bold">${transaksi.total}</span></p>
+                  <p class="text-gray-600">Metode Pembayaran: <span class="font-bold">${transaksi.metode_pembayaran}</span></p>
+                  <p class="text-gray-600">Status: <span class="font-bold">${transaksi.status}</span></p>
+                  <!-- Other Transaksi Details -->
+                  <!-- Add more details as needed -->
+                `;
+                transaksiCard.appendChild(transaksiDetails);
+        
+                // Append the transaksi card to the transaksi container
+                transaksiContainer.appendChild(transaksiCard);
+              });
+            } else {
+              console.error('Invalid or empty transaksi data:', transaksiData);
+            }
+          } catch (error) {
+            console.error('Error fetching transaksi data:', error.message);
+          }
+        }
+        
+      
+        // Call these functions to populate cards when the page is loaded
+        document.addEventListener('DOMContentLoaded', () => {
+          populateWarungCards();
+          populateTransaksiCards();
+          // Add other initializations as needed
         });
-      })
+      
+      </script>
+      <script>
+        let tabs = document.querySelectorAll(".tab");
+        let indicator = document.querySelector(".indicator");
+        let panels = document.querySelectorAll(".tab-panel");
 
-    </script>
-  </body>
-</html>
+        indicator.style.width = tabs[0].getBoundingClientRect().width + "px";
+        indicator.style.left = tabs[0].getBoundingClientRect().left - tabs[0].parentElement.getBoundingClientRect().left + "px";
+
+        tabs.forEach(tab => {
+            tab.addEventListener("click", () => {
+              let tabTarget = tab.getAttribute("aria-controls");
+
+              indicator.style.width = tab.getBoundingClientRect().width + "px";
+              indicator.style.left = tab.getBoundingClientRect().left - tab.parentElement.getBoundingClientRect().left + "px";
+
+              panels.forEach(panel => {
+                if (panel.getAttribute("id") === tabTarget) {
+                  panel.classList.remove("invisible", "opacity-0");
+                  panel.classList.add("visible", "opacity-100", );
+                  panel.setAttribute("aria-hidden", "false");
+                  panel.setAttribute("tabindex", "0");
+                } else {
+                  panel.classList.remove("visible", "opacity-100");
+                  panel.classList.add("invisible", "opacity-0");
+                  panel.setAttribute("aria-hidden", "true");
+                  panel.setAttribute("tabindex", "-1");
+                }
+              });
+          });
+        })
+
+      </script>
+    </body>
+  </html>
