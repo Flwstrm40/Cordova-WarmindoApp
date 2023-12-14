@@ -29,7 +29,7 @@
             <ion-icon name="menu-outline" onclick="Menu(this)"></ion-icon>
           </span>
         <span class="text-xl font-sans ml-5">
-          Role Management
+         Manajemen Role
         </span>
            
       </div>
@@ -50,7 +50,7 @@
           <a
             href="userManagement.html"
             class="hover:text-gray-300 block px-2 text-white py-1 rounded"
-            >Manajemen Akun</a
+            >Manajemen Pengguna</a
           >
         </li>
         <li class="mx-4 my-6 md:my-0  flex items-center">
@@ -79,7 +79,7 @@
         if (e.name === "menu-outline") {
           e.name = "close";
           list.classList.remove("top-[80px]");
-          list.classList.add("top-[60px]", "opacity-100");
+          list.classList.add("top-[60px]", "opacity-100", "z-50");
           list.classList.remove("opacity-0");
         } else {
           e.name = "menu-outline";

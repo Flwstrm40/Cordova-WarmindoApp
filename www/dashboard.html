@@ -63,7 +63,7 @@
 
       <!-- Content -->
       <!-- Card -->
-      <div class=" flex max-w-full justify-start overflow-x-auto overflow-y-auto mb-5">
+      <div class=" flex max-w-full justify-start mb-5 overflow-auto">
 
         <div class="mt-5 max-w-full rounded-md bg-yellow-400 mx-5">
           <div class="px-6 py-4 flex place-items-end">
@@ -85,13 +85,13 @@
 
 
       <!-- Tab -->
-      <div class="min-h-screen flex overflow-auto max-w-full max-h-screen fixed w-full">
-        <div class="w-full px-8 sm:px-0">
-          <div class="sm:w-full sm:mx-auto">
+      <div class="max-h-full flex max-w-full fixed w-full">
+        <div class="w-full px-8 sm:px-0 h-full">
+          <div class="sm:w-full sm:mx-auto sm:h-full">
             <div
               role="tablist"
               aria-label="Tabs"
-              class="relative w-full mx-auto h-12 grid grid-cols-2 items-center px-[3xl] rounded-md bg-black overflow-hidden shadow-900/20"
+              class="relative w-full mx-auto h-12 grid grid-cols-2 items-center px-[3xl] rounded-md bg-black shadow-900/20"
             >
               <div class="absolute indicator bottom-0 w-[50%] top-0 left-0 rounded-md bg-red-800"></div>
               <!-- Tab Title -->
@@ -118,23 +118,40 @@
             </div>
 
             <!-- Tab Content -->
-            <div class="mt-0 relative">
-              <div
-                role="tabpanel"
-                id="panel-1"
-                class="tab-panel p-6 transition duration-300"
-              >
-                <div class="mt-0 text-gray-700 max-h-[47vh] h-[100%] overflow-y-auto">
+            <div class="mt-5 relative">
+              <!-- For Warung -->
+              <div role="tabpanel" id="panel-1" class="tab-panel p-6 transition duration-300 min-h-full max-h-[400px] overflow-auto">
+                <div class="mt-0 text-gray-700">
                   
                 </div>
               </div>
-              <div
-                role="tabpanel"
-                id="panel-2"
-                class="absolute top-0 invisible opacity-0 tab-panel p-6 transition duration-300"
-              >
-                <div class="mt-0 text-gray-700  max-h-full overflow-y-auto overflow-x-auto">
-             
+              <!-- For Transaksi -->
+              <div role="tabpanel" id="panel-2" class="absolute top-0 invisible opacity-0 tab-panel p-6 transition max-h-[400px] duration-300 max-w-full overflow-auto">
+                <div class="mt-0 text-gray-700 ">
+                  
+                  <table class="min-w-full divide-y divide-gray-200">
+                    <thead>
+                      <tr>
+                        <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">ID Transaksi</th>
+                        <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Tanggal</th>
+                        <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Waktu</th>
+                        <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Shift</th>
+                        <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">ID Pengguna</th>
+                        <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">ID Pelanggan</th>
+                        <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Status</th>
+                        <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Kode Meja</th>
+                        <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Nama Pelanggan</th>
+                        <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Total</th>
+                        <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Metode Pembayaran</th>
+                        <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Total Diskon</th>
+                        <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">ID Promosi</th>
+                      </tr>
+                    </thead>
+                    <tbody id="transaksiTableBody">
+                      <!-- Transaksi data will be populated here -->
+                    </tbody>
+                  </table>
+
                 </div>
               </div>
             </div>
@@ -164,106 +181,7 @@
           }
         }
 
-        async function fetchData(url) {
-          try {
-            const response = await fetch(url);
-            const data = await response.json();
-            return data;
-          } catch (error) {
-            console.error('Error fetching data:', error.message);
-            return null;
-          }
-        }
       
-        async function populateWarungCards() {
-          try {
-            const warungData = await fetchData('https://cordova-warmindo-api.vercel.app/warung');
-            const warungContainer = document.getElementById('panel-1');
-        
-            if (warungData && Array.isArray(warungData.warung) && warungContainer) {
-              warungData.warung.forEach(warung => {
-                // Create elements for warung details and append them to the card
-                const warungCard = document.createElement('div');
-                warungCard.classList.add('flex', 'items-center', 'max-w-full', 'bg-white', 'p-6', 'rounded-lg', 'shadow-md', 'mt-5', 'border', 'border-solid', 'border-gray-300');
-        
-                // Create and append other elements for warung details (e.g., image, name, ID)
-                const warungLogo = document.createElement('img');
-                warungLogo.src = warung.logo;
-                warungLogo.alt = 'Warung Logo';
-                warungLogo.classList.add('w-16', 'h-16', 'rounded-full', 'mr-6');
-                warungCard.appendChild(warungLogo);
-        
-                const warungDetails = document.createElement('div');
-                // Populate warung details
-                warungDetails.innerHTML = `
-                  <h2 class="text-xl font-semibold text-gray-800">${warung.nama_warung}</h2>
-                  <p class="text-gray-600">ID: <span class="font-bold">${warung.id_warung}</span></p>
-                  <p class="text-gray-600">Lokasi: <span class="font-bold">${warung.lokasi}</span></p>
-                  <!-- Other Warung Details -->
-                  <!-- Add more details as needed -->
-                `;
-                warungCard.appendChild(warungDetails);
-        
-                // Append the warung card to the warung container
-                warungContainer.appendChild(warungCard);
-              });
-            } else {
-              console.error('Invalid or empty warung data:', warungData);
-            }
-          } catch (error) {
-            console.error('Error fetching warung data:', error.message);
-          }
-        }
-        
-        
-      
-        async function populateTransaksiCards() {
-          try {
-            const transaksiData = await fetchData('https://cordova-warmindo-api.vercel.app/transaksi');
-            const transaksiContainer = document.getElementById('panel-2');
-        
-            if (transaksiData && transaksiData.transaksi && transaksiData.transaksi.length > 0 && transaksiContainer) {
-              // Iterate over each transaksi and create cards
-              transaksiData.transaksi.forEach(transaksi => {
-                // Create elements for transaksi details and append them to the card
-                const transaksiCard = document.createElement('div');
-                transaksiCard.classList.add('flex', 'items-center', 'max-w-full', 'bg-white', 'p-6', 'rounded-md', 'shadow-md', 'mt-5', 'border', 'border-solid', 'border-gray-300');
-        
-                // Create and append elements for transaksi details
-                const transaksiDetails = document.createElement('div');
-                // Populate transaksi details
-                transaksiDetails.innerHTML = `
-                  <h2 class="text-xl font-semibold text-gray-800">Transaksi Details</h2>
-                  <p class="text-gray-600">ID: <span class="font-bold">${transaksi.id_transaksi}</span></p>
-                  <p class="text-gray-600">Tanggal: <span class="font-bold">${transaksi.tanggal}</span></p>
-                  <p class="text-gray-600">Waktu: <span class="font-bold">${transaksi.waktu}</span></p>
-                  <p class="text-gray-600">Nama Pelanggan: <span class="font-bold">${transaksi.nama_pelanggan || '-'}</span></p>
-                  <p class="text-gray-600">Total: $<span class="font-bold">${transaksi.total}</span></p>
-                  <p class="text-gray-600">Metode Pembayaran: <span class="font-bold">${transaksi.metode_pembayaran}</span></p>
-                  <p class="text-gray-600">Status: <span class="font-bold">${transaksi.status}</span></p>
-                  <!-- Other Transaksi Details -->
-                  <!-- Add more details as needed -->
-                `;
-                transaksiCard.appendChild(transaksiDetails);
-        
-                // Append the transaksi card to the transaksi container
-                transaksiContainer.appendChild(transaksiCard);
-              });
-            } else {
-              console.error('Invalid or empty transaksi data:', transaksiData);
-            }
-          } catch (error) {
-            console.error('Error fetching transaksi data:', error.message);
-          }
-        }
-        
-      
-        // Call these functions to populate cards when the page is loaded
-        document.addEventListener('DOMContentLoaded', () => {
-          populateWarungCards();
-          populateTransaksiCards();
-          // Add other initializations as needed
-        });
       
       </script>
       <script>

@@ -5,11 +5,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Dashboard</title>
 
-        <!-- Onsen UI Here -->
-    <link rel="stylesheet" href="node_modules/onsenui/css/onsenui.css">
-    <link rel="stylesheet" href="node_modules/onsenui/css/onsen-css-components.css">
-    <script src="node_modules/onsenui/js/onsenui.js"></script>
-
     
     <script src="https://cdn.tailwindcss.com"></script>
     <script
@@ -22,7 +17,7 @@
     ></script>
   </head>
 
-  <body class="font-sans">
+  <body class="font-sans overflow-hidden">
     <!-- Side nav -->
     <nav class="p-5 bg-red-800 text-white shadow md:flex md:items-center md:justify-between">
       <div class="flex justify-start items-center">
@@ -30,7 +25,7 @@
             <ion-icon name="menu-outline" onclick="Menu(this)"></ion-icon>
           </span>
         <span class="text-xl font-sans ml-5">
-          User Management
+          Manajemen Pengguna
         </span>
            
       </div>
@@ -51,7 +46,7 @@
           <a
             href="userManagement.html"
             class="hover:text-gray-300 block px-2 text-white py-1 rounded"
-            >Manajemen Akun</a
+            >Manajemen Pengguna</a
           >
         </li>
         <li class="mx-4 my-6 md:my-0  flex items-center">
@@ -67,12 +62,81 @@
     </nav>
 
     <!-- Content -->
+    <!-- Tab -->
+    <div class="max-h-full flex max-w-full fixed w-full mt-3">
+      <div class="w-full px-8 sm:px-0 h-full">
+        <div class="sm:w-full sm:mx-auto sm:h-full">
+          <div
+            role="tablist"
+            aria-label="Tabs"
+            class="relative w-full mx-auto h-12 grid grid-cols-2 items-center px-[3xl] rounded-md bg-black shadow-900/20"
+          >
+            <div class="absolute indicator bottom-0 w-[50%] top-0 left-0 rounded-md bg-red-800"></div>
+            <!-- Tab Title -->
+            <button
+              role="tab"
+              aria-selected="true"
+              aria-controls="panel-1"
+              id="tab-1"
+              tabindex="0"
+              class="relative block h-10 tab rounded-full"
+            >
+              <span class="text-white font-medium">Isi</span>
+            </button>
+            <button
+              role="tab"
+              aria-selected="false"
+              aria-controls="panel-2"
+              id="tab-2"
+              tabindex="-1"
+              class="relative block h-10 tab rounded-full"
+            >
+              <span class="text-white font-medium">Lihat</span>
+            </button>
+          </div>
+
+          <!-- Tab Content -->
+          <div class="mt-5 relative">
+            <!-- For Isi -->
+            <div role="tabpanel" id="panel-1" class="tab-panel p-6 transition duration-300 min-h-full max-h-[550px] overflow-auto">
+              <div class="mt-0 text-gray-700">
+                <!-- Buat Form Input  -->
+              </div>
+            </div>
+            <!-- Lihat  -->
+            <div role="tabpanel" id="panel-2" class="absolute top-0 invisible opacity-0 tab-panel p-6 transition max-h-[400px] duration-300 max-w-full overflow-auto">
+              <div class="mt-0 text-gray-700 ">
+                
+                <table class="min-w-full divide-y divide-gray-200">
+                  <thead>
+                    <tr>
+                      <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">ID Pengguna</th>
+                      <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Username</th>
+                      <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Nama Pengguna</th>
+                      <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Role</th>
+                      <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Status</th>
+                      <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Aksi</th>
+                    </tr>
+                  </thead>
+                  <tbody id="transaksiTableBody">
+                    <!-- Transaksi data will be populated here -->
+                  </tbody>
+                </table>
+
+              </div>
+            </div>
+          </div>
+
+
+        </div>
+      </div>
+    </div>
     
 
 
 
     <!-- Script JS -->
-    <script src="js/dashboard.js"></script>
+    <script src="js/roleManagement.js"></script>
     <script>
       function Menu(e) {
         let list = document.querySelector("ul");
@@ -80,14 +144,46 @@
         if (e.name === "menu-outline") {
           e.name = "close";
           list.classList.remove("top-[80px]");
-          list.classList.add("top-[60px]", "opacity-100");
+          list.classList.add("top-[60px]", "opacity-100", "z-50");
           list.classList.remove("opacity-0");
         } else {
           e.name = "menu-outline";
-          list.classList.remove("top-[60px]", "opacity-100");
+          list.classList.remove("top-[60px]", "opacity-100", "z-50");
           list.classList.add("top-[80px]", "opacity-0");
         }
       }
+    </script>
+    <script>
+      let tabs = document.querySelectorAll(".tab");
+      let indicator = document.querySelector(".indicator");
+      let panels = document.querySelectorAll(".tab-panel");
+
+      indicator.style.width = tabs[0].getBoundingClientRect().width + "px";
+      indicator.style.left = tabs[0].getBoundingClientRect().left - tabs[0].parentElement.getBoundingClientRect().left + "px";
+
+      tabs.forEach(tab => {
+          tab.addEventListener("click", () => {
+            let tabTarget = tab.getAttribute("aria-controls");
+
+            indicator.style.width = tab.getBoundingClientRect().width + "px";
+            indicator.style.left = tab.getBoundingClientRect().left - tab.parentElement.getBoundingClientRect().left + "px";
+
+            panels.forEach(panel => {
+              if (panel.getAttribute("id") === tabTarget) {
+                panel.classList.remove("invisible", "opacity-0");
+                panel.classList.add("visible", "opacity-100", );
+                panel.setAttribute("aria-hidden", "false");
+                panel.setAttribute("tabindex", "0");
+              } else {
+                panel.classList.remove("visible", "opacity-100");
+                panel.classList.add("invisible", "opacity-0");
+                panel.setAttribute("aria-hidden", "true");
+                panel.setAttribute("tabindex", "-1");
+              }
+            });
+        });
+      })
+
     </script>
   </body>
 </html>
