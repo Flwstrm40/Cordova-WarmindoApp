@@ -6,7 +6,7 @@ async function fetchRoleData() {
             throw new Error(`HTTP error! Status: ${response.status}`);
         }
         const roleData = await response.json();
-        return roleData.user || [];
+        return roleData.role || [];
     } catch (error) {
         console.error('Error fetching role data:', error);
         return [];
@@ -34,7 +34,7 @@ function fetchData() {
                     row.innerHTML = `
                     <td class="px-6 py-4 whitespace-nowrap">${role.id_role}</td>
                     <td class="px-6 py-4 whitespace-nowrap">${role.role}</td>
-                    <td class="px-6 py-4 whitespace-nowrap">${role.status}</td>
+                    <td class="px-6 py-4 whitespace-nowrap">${role.status === 'aktif' ? 'Aktif' : 'Tidak Aktif'}</td>
                     <td class="px-6 py-4 whitespace-nowrap">
                         <button class="text-blue-600 hover:text-blue-900 mr-2" onclick="editUser('${role._id}')">
                             <ion-icon name="create-outline"></ion-icon>

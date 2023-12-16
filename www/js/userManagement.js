@@ -4,6 +4,7 @@ function fetchData() {
       .then(response => response.json())
       .then(userData => {
         userDataResponse = userData;
+          console.log('Data role:', userDataResponse);
         // Mengambil elemen tbody berdasarkan id
         const userDataBody = document.getElementById('userDataBody');
   
@@ -16,7 +17,7 @@ function fetchData() {
           .then(roleData => {
             // Membuat objek untuk memetakan ID role ke nama role
             const roleMap = {};
-            roleData.user.forEach(role => {
+            roleData.role.forEach(role => {
               roleMap[role.id_role] = role.role;
             });
   
@@ -30,7 +31,7 @@ function fetchData() {
                 <td class="px-6 py-4 whitespace-nowrap">${user.username}</td>
                 <td class="px-6 py-4 whitespace-nowrap">${user.nama_pengguna}</td>
                 <td class="px-6 py-4 whitespace-nowrap">${roleMap[user.id_role]}</td>
-                <td class="px-6 py-4 whitespace-nowrap">${user.status}</td>
+                <td class="px-6 py-4 whitespace-nowrap">${user.status === 'aktif' ? 'Aktif' : 'Tidak Aktif'}</td>
                 <td class="px-6 py-4 whitespace-nowrap">
                     <button class="text-blue-600 hover:text-blue-900 mr-2" onclick="editUser('${user._id}')">
                     <ion-icon name="create-outline"></ion-icon>
@@ -122,17 +123,20 @@ document.getElementById('inputForm').addEventListener('submit', function (event)
 });
 
   
-// Function to fetch user data by ID
 async function fetchUserById(userId) {
-    try {
-      const response = await fetch(`https://cordova-warmindo-api.vercel.app/user/${userId}`);
-      const userData = await response.json();
-      return userData;
-    } catch (error) {
-      console.error('Error fetching user data by ID:', error);
-      throw error;
+  try {
+    const response = await fetch(`https://cordova-warmindo-api.vercel.app/user/${userId}`);
+    if (!response.ok) {
+      throw new Error(`Error fetching user data by ID: ${response.statusText}`);
     }
+    const userData = await response.json();
+    return userData;
+  } catch (error) {
+    console.error('Error fetching user data by ID:', error);
+    throw error;
   }
+}
+
   
   // Function to populate the form with user data
   async function populateForm(userId) {
@@ -155,7 +159,7 @@ async function fetchUserById(userId) {
     console.log("Edit user", userId);
     // Mengarahkan ke halaman edituser.html dan menyimpan ID pengguna yang akan diedit di localStorage
     localStorage.setItem('editUserId', userId);
-    window.location.href = '../edituser.html';
+    window.location.href = '../editUser.html';
   }
   
   

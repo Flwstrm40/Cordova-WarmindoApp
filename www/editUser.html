@@ -98,7 +98,7 @@
                       idRoleSelect.innerHTML = '';
                       
                       // Menambahkan opsi-opsi baru berdasarkan data dari API
-                      data.user.forEach(role => {
+                      data.role.forEach(role => {
                           const option = document.createElement('option');
                           option.value = role.id_role;
                           option.textContent = role.role;
