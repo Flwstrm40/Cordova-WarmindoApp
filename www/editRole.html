@@ -3,7 +3,7 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Edit Pengguna</title>
+    <title>Edit Role</title>
 
     
     <script src="https://cdn.tailwindcss.com"></script>
@@ -25,7 +25,7 @@
             <ion-icon name="menu-outline" onclick="Menu(this)"></ion-icon>
           </span>
         <span class="text-xl font-sans ml-5">
-         Edit Pengguna
+         Edit Role
         </span>
            
       </div>
@@ -67,72 +67,36 @@
          
          <form id="inputForm">
              <div class="mb-4">
-                 <label for="idpengguna" class="block text-sm font-medium text-gray-600">ID Pengguna</label>
-                 <input type="text" id="idpengguna" name="idpengguna" class="mt-1 p-2 border border-gray-300 rounded-md w-full" disabled/>
+                 <label for="idrole" class="block text-sm font-medium text-gray-600">ID Role</label>
+                 <input type="text" id="idrole" name="idrole" class="mt-1 p-2 border border-gray-300 rounded-md w-full" disabled/>
                 </div>
                 
                 <div class="mb-4">
-                    <label for="username" class="block text-sm font-medium text-gray-600">Username</label>
-                    <input type="text" id="username" name="username" class="mt-1 p-2 border border-gray-300 rounded-md w-full" disabled />
+                    <label for="role" class="block text-sm font-medium text-gray-600">Role</label>
+                    <input type="text" id="role" name="role" class="mt-1 p-2 border border-gray-300 rounded-md w-full" />
                 </div>
                 
-                <div class="mb-4">
-                    <label for="namapengguna" class="block text-sm font-medium text-gray-600">Nama Pengguna</label>
-                    <input type="text" id="namapengguna" name="namapengguna" class="mt-1 p-2 border border-gray-300 rounded-md w-full" />
-                </div>
-                
-                <div class="mb-4">
-          <label for="idrole" class="block text-sm font-medium text-gray-600">Role</label>
-          <!-- Select untuk ID Role -->
-          <select id="idrole" name="idrole" class="mt-1 p-2 border border-gray-300 rounded-md w-full">
-              <!-- Pilihan ID Role akan diisi secara dinamis -->
-              <script>
-                  // Mengambil data role dari API
-                  fetch('https://cordova-warmindo-api.vercel.app/role')
-                  .then(response => response.json())
-                  .then(data => {
-                      // Mengambil elemen select berdasarkan id
-                      const idRoleSelect = document.getElementById('idrole');
-                      
-                      // Membersihkan opsi yang sudah ada
-                      idRoleSelect.innerHTML = '';
-                      
-                      // Menambahkan opsi-opsi baru berdasarkan data dari API
-                      data.user.forEach(role => {
-                          const option = document.createElement('option');
-                          option.value = role.id_role;
-                          option.textContent = role.role;
-                          idRoleSelect.appendChild(option);
-                        });
-                    })
-                    .catch(error => {
-                        console.error('Error fetching role data:', error);
-                    });
-                    
-                </script>
-            </select>
-            </div>
             
-            <div class="mb-4">
-                <label for="status" class="block text-sm font-medium text-gray-600">Status</label>
-                <!-- Select untuk Status -->
-                <select id="status" name="status" class="mt-1 p-2 border border-gray-300 rounded-md w-full">
-                    <option value="aktif">Aktif</option>
-                    <option value="tidak aktif">Tidak Aktif</option>
-                </select>
-            </div>
-            
-            <!-- Tombol untuk submit form -->
-            <button class="bg-red-500 mt-5 text-white py-2 px-4 rounded-md" onclick="history.back();return false;">Kembali</button>
-            <button type="submit"  class="bg-blue-500 mt-5 text-white py-2 px-4 rounded-md ml-2">Simpan</button>
-        </form>
-    </div>
+                <div class="mb-4">
+                    <label for="status" class="block text-sm font-medium text-gray-600">Status</label>
+                    <!-- Select untuk Status -->
+                    <select id="status" name="status" class="mt-1 p-2 border border-gray-300 rounded-md w-full">
+                        <option value="aktif">Aktif</option>
+                        <option value="tidak aktif">Tidak Aktif</option>
+                    </select>
+                </div>
+                
+                <!-- Tombol untuk submit form -->
+                <button class="bg-red-500 mt-5 text-white py-2 px-4 rounded-md" onclick="history.back();return false;">Kembali</button>
+                <button type="submit"  class="bg-blue-500 mt-5 text-white py-2 px-4 rounded-md ml-2">Simpan</button>
+            </form>
+        </div>
     
     
 
 
     <!-- Script JS -->
-    <script src="js/editUserManagement.js"></script>
+    <script src="js/editRoleManagement.js"></script>
     <script>
         function Menu(e) {
           let list = document.querySelector("ul");
