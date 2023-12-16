@@ -14,9 +14,24 @@ async function fetchUserByIdFromAPI(userId) {
         }
 
         const userData = await response.json();
-        return userData.user; // Assuming the API response has a 'user' property
+        return userData.user; 
     } catch (error) {
         console.error('Error fetching user data:', error);
+        throw error;
+    }
+}
+
+// Function to check if the edited username already exists
+async function isUsernameExist(username, userId) {
+    try {
+        const response = await fetch('https://cordova-warmindo-api.vercel.app/user');
+        const userData = await response.json();
+        
+        // Check if the username already exists (excluding the current user being edited)
+        const existingUser = userData.user.find(user => user.username === username && user._id !== userId);
+        return !!existingUser; // Returns true if the username exists, false otherwise
+    } catch (error) {
+        console.error('Error checking if username exists:', error);
         throw error;
     }
 }
@@ -45,6 +60,17 @@ async function populateForm() {
         // Add event listener to the form for submit action
         document.getElementById('inputForm').addEventListener('submit', async function (event) {
             event.preventDefault();
+
+             // Extract form data
+             const newUsername = document.getElementById('username').value;
+
+             // Check if the new username already exists
+             const isExist = await isUsernameExist(newUsername, userId);
+ 
+             if (isExist) {
+                 alert('Username sudah terpakai. Mohon gunakan yang lain.');
+                 return; // Stop the process if the username already exists
+             }
 
             // Extract form data
             const formData = {
