@@ -47,3 +47,4 @@ loginButton.addEventListener('click', async () => {
         alert('Terjadi kesalahan. Silakan coba lagi.');
     }
 });
+

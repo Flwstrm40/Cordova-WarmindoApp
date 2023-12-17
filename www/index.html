@@ -2,17 +2,10 @@
 <html>
   <head>
     <title>Login Page</title>
-    <!-- <link rel="stylesheet" type="text/css" href="../dist/output.css"> -->
-    <!-- <link rel="stylesheet" type="text/css" href="css/styles.css"> -->
     <script src="https://cdn.tailwindcss.com"></script>
 
-    <!-- Onsen UI Here -->
-    <link rel="stylesheet" href="node_modules/onsenui/css/onsenui.css">
-    <link rel="stylesheet" href="node_modules/onsenui/css/onsen-css-components.css">
-    <script src="node_modules/onsenui/js/onsenui.js"></script>
-
     <style>
-    #exitPopup {
+      #exitPopup {
         width: 280px;
         position: fixed;
         top: 50%;
@@ -24,32 +17,30 @@
         text-align: center;
         border-radius: 10px;
         display: none;
-    }
-    #exitPopup.show {
+      }
+      #exitPopup.show {
         display: block;
-    }
-    #exitPopup h3 {
+      }
+      #exitPopup h3 {
         font-size: 26px;
         margin: 0 0 20px;
-    }
-    #exitPopup button {
+      }
+      #exitPopup button {
         background-color: #fff;
         color: #000;
         padding: 10px;
         border: 0;
         border-radius: 5px;
         min-width: 100px;
-    }
-    #exitPopup button:hover {
+      }
+      #exitPopup button:hover {
         background: gray;
-    }
-
+      }
     </style>
   </head>
 
   <body class="font-sans">
     <div class="container mx-auto mt-30">
-      <!-- <h2 class="text-2xl font-semibold mb-4 mt-10 text-center">Login Dulu Bang</h2> -->
       <img
         class="h-40 w-40 mx-auto mt-10"
         src="https://evermos.com/home/wp-content/uploads/2022/10/modern-dan-melokal_referensi-logo-warmindo-ciamik-dan-kekinian_10-referensi-logo-warmindo-ciamik-dan-kekinian.jpeg"
@@ -85,76 +76,48 @@
     </div>
 
     <div id="exitPopup">
-        <h3>Keluar dari Aplikasi?</h3>
-        <button id="closePopup">No</button>
-        <button id="exitApp">Yes</button>
+      <h3>Keluar dari Aplikasi?</h3>
+      <button id="closePopup">No</button>
+      <button id="exitApp">Yes</button>
     </div>
-
-    <!-- <div class="container">
-        <h2>Login</h2>
-        <form id="loginForm" class="mt-30">
-            <label for="username">Username:</label>
-            <input type="text" id="username" name="username" required>
-            <label for="password">Password:</label>
-            <input type="password" id="password" name="password" required>
-            <button type="button" onclick="login()">Login</button>
-        </form>
-    </div> -->
 
     <footer class="text-center text-gray-400 text-xs bottom-5 w-[100%] mt-8">
       Version 1.0
     </footer>
+    <script src="cordova.js"></script>
     <script src="js/index.js"></script>
-    <!-- <script>
+    <script>
       document.addEventListener("deviceready", onDeviceReady, false);
 
       function onDeviceReady() {
         document.addEventListener("backbutton", onBackKeyDown, false);
+        screen.orientation.lock('portrait');
       }
 
       function onBackKeyDown(e) {
-
         // Prompt the user with a confirmation dialog
         navigator.notification.confirm(
-          "Are you sure you want to exit?",
+          "Apakah Anda ingin keluar dari Aplikasi?",
           onConfirm,
-          "Confirmation",
-          ["Yes", "No"]
+          "Konfirmasi",
+          ["Ya", "Tidak"]
         );
       }
 
       function onConfirm(buttonIndex) {
         if (buttonIndex === 1) {
           // If the user clicks "Yes," exit the app
-          navigator.device.exitApp();
+          if (navigator.app) {
+            navigator.app.exitApp();
+          } else if (navigator.device) {
+            navigator.device.exitApp();
+          } else {
+            console.log('Tidak dapat keluar dari aplikasi.');
+          }
         } else {
           // If the user clicks "No," do nothing or handle it as needed
         }
       }
-    </script> -->
-    <script type="text/javascript">
-        function onDeviceReady() {
-            document.addEventListener("backbutton", onBackButton, false);
-        }
-        function onBackButton() {
-            exitPopup = document.getElementById("exitPopup");
-            closePopup = document.getElementById("closePopup");
-            exitApp = document.getElementById("exitApp");
-            exitPopup.classList.add("show");
-            closePopup.addEventListener("click", function() {
-                exitPopup.classList.remove("show");
-            });
-            exitApp.addEventListener("click", function() {
-                setTimeout(function() {
-                    navigator.app.exitApp();
-                }, 500);
-            });
-        }
-        document.addEventListener("deviceready", function() {
-            onDeviceReady();
-        });
-          
     </script>
-
   </body>
 </html>
