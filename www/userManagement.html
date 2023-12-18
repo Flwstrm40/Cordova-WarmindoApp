@@ -146,30 +146,33 @@
                     <!-- Select untuk ID Role -->
                     <select id="idrole" name="idrole" class="mt-1 p-2 border border-gray-300 rounded-md w-full">
                       <!-- Pilihan ID Role akan diisi secara dinamis -->
-                      <script>
-                        // Mengambil data role dari API
+                        <script>
+                          // Mengambil data role dari API
                           fetch('https://cordova-warmindo-api.vercel.app/role')
-                          .then(response => response.json())
-                          .then(data => {
-                            // Mengambil elemen select berdasarkan id
-                            const idRoleSelect = document.getElementById('idrole');
+                            .then(response => response.json())
+                            .then(data => {
+                              // Mengambil elemen select berdasarkan id
+                              const idRoleSelect = document.getElementById('idrole');
 
-                            // Membersihkan opsi yang sudah ada
-                            idRoleSelect.innerHTML = '';
+                              // Membersihkan opsi yang sudah ada
+                              idRoleSelect.innerHTML = '';
 
-                            // Menambahkan opsi-opsi baru berdasarkan data dari API
-                            data.role.forEach(role => {
-                              const option = document.createElement('option');
-                              option.value = role.id_role;
-                              option.textContent = role.role;
-                              idRoleSelect.appendChild(option);
+                              // Filter hanya role yang aktif
+                              const activeRoles = data.role.filter(role => role.status === 'aktif');
+
+                              // Menambahkan opsi-opsi baru berdasarkan data dari API
+                              activeRoles.forEach(role => {
+                                const option = document.createElement('option');
+                                option.value = role.id_role;
+                                option.textContent = role.role;
+                                idRoleSelect.appendChild(option);
+                              });
+                            })
+                            .catch(error => {
+                              console.error('Error fetching role data:', error);
                             });
-                          })
-                          .catch(error => {
-                            console.error('Error fetching role data:', error);
-                          });
+                        </script>
 
-                      </script>
                     </select>
                   </div>
 

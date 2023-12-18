@@ -107,52 +107,57 @@ function formatRupiah(number) {
   return new Intl.NumberFormat('id-ID', { style: 'currency', currency: 'IDR' }).format(number);
 }
 
-  async function populateTransaksiTable() {
-    try {
-      const transaksiData = await fetchData('https://cordova-warmindo-api.vercel.app/transaksi');
-      const transaksiTableBody = document.getElementById('transaksiTableBody');
+async function populateTransaksiTable() {
+  try {
+    const transaksiData = await fetchData('https://cordova-warmindo-api.vercel.app/transaksi');
+    const transaksiTableBody = document.getElementById('transaksiTableBody');
 
-      // Clear previous data
-      transaksiTableBody.innerHTML = '';
+    // Clear previous data
+    transaksiTableBody.innerHTML = '';
 
-      if (transaksiData && transaksiData.transaksi && transaksiData.transaksi.length > 0 && transaksiTableBody) {
-         // Extract only the date part from the timestamp
-         // Iterate over each transaksi and create table rows
-         transaksiData.transaksi.forEach(transaksi => {
-          const tanggalPart = transaksi.tanggal.split('T')[0];
-          const formattedTotal = formatRupiah(transaksi.total);
-          const formattedDiskon = formatRupiah(transaksi.total_diskon);
-          const tableRow = document.createElement('tr');
-          // Populate table cells with transaksi details
-          tableRow.innerHTML = `
-            <td class="px-6 py-4 whitespace-nowrap">${transaksi.id_transaksi || '-'}</td>
-            <td class="px-6 py-4 whitespace-nowrap">${tanggalPart || '-'}</td>
-            <td class="px-6 py-4 whitespace-nowrap">${transaksi.waktu || '-'}</td>
-            <td class="px-6 py-4 whitespace-nowrap">${transaksi.shift || '-'}</td>
-            <td class="px-6 py-4 whitespace-nowrap">${transaksi.id_pengguna || '-'}</td>
-            <td class="px-6 py-4 whitespace-nowrap">${transaksi.id_pelanggan || '-'}</td>
-            <td class="px-6 py-4 whitespace-nowrap">${transaksi.status || '-'}</td>
-            <td class="px-6 py-4 whitespace-nowrap">${transaksi.kode_meja || '-'}</td>
-            <td class="px-6 py-4 whitespace-nowrap">${transaksi.nama_pelanggan || '-'}</td>
-            <td class="px-6 py-4 whitespace-nowrap">${formattedTotal || '-'}</td>
-            <td class="px-6 py-4 whitespace-nowrap">${transaksi.metode_pembayaran || '-'}</td>
-            <td class="px-6 py-4 whitespace-nowrap">${formattedDiskon || '-'}</td>
-            <td class="px-6 py-4 whitespace-nowrap">${transaksi.id_promosi || '-'}</td>
-          `;
-          // Append the table row to the table body
-          transaksiTableBody.appendChild(tableRow);
-        });
-      } else {
-        console.error('Invalid or empty transaksi data:', transaksiData);
-      }
-    } catch (error) {
-      console.error('Error fetching transaksi data:', error.message);
+    if (transaksiData && transaksiData.transaksi && transaksiData.transaksi.length > 0 && transaksiTableBody) {
+
+      // Extract only the date part from the timestamp
+      // Iterate over each transaksi and create table rows
+      // sort by id_transaksi
+      transaksiData.transaksi
+      .sort((a, b) => a.id_transaksi.localeCompare(b.id_transaksi))
+      .forEach((transaksi) => {
+        const tanggalPart = transaksi.tanggal.split('T')[0];
+        const formattedTotal = formatRupiah(transaksi.total);
+        const formattedDiskon = formatRupiah(transaksi.total_diskon);
+        const tableRow = document.createElement('tr');
+        // Populate table cells with transaksi details
+        tableRow.innerHTML = `
+          <td class="px-6 py-4 whitespace-nowrap">${transaksi.id_transaksi || '-'}</td>
+          <td class="px-6 py-4 whitespace-nowrap">${tanggalPart || '-'}</td>
+          <td class="px-6 py-4 whitespace-nowrap">${transaksi.waktu || '-'}</td>
+          <td class="px-6 py-4 whitespace-nowrap">${transaksi.shift || '-'}</td>
+          <td class="px-6 py-4 whitespace-nowrap">${transaksi.id_pengguna || '-'}</td>
+          <td class="px-6 py-4 whitespace-nowrap">${transaksi.id_pelanggan || '-'}</td>
+          <td class="px-6 py-4 whitespace-nowrap">${transaksi.status || '-'}</td>
+          <td class="px-6 py-4 whitespace-nowrap">${transaksi.kode_meja || '-'}</td>
+          <td class="px-6 py-4 whitespace-nowrap">${transaksi.nama_pelanggan || '-'}</td>
+          <td class="px-6 py-4 whitespace-nowrap">${formattedTotal || '-'}</td>
+          <td class="px-6 py-4 whitespace-nowrap">${transaksi.metode_pembayaran || '-'}</td>
+          <td class="px-6 py-4 whitespace-nowrap">${formattedDiskon || '-'}</td>
+          <td class="px-6 py-4 whitespace-nowrap">${transaksi.id_promosi || '-'}</td>
+        `;
+        // Append the table row to the table body
+        transaksiTableBody.appendChild(tableRow);
+      });
+    } else {
+      console.error('Invalid or empty transaksi data:', transaksiData);
     }
+  } catch (error) {
+    console.error('Error fetching transaksi data:', error.message);
   }
+}
+
   
   // Panggil fungsi ini saat halaman dimuat
   document.addEventListener('DOMContentLoaded', () => {
-    // Fetch total warung dan total transaksi
+    // Fetch total warung dan total transaksi serta data warung dan transaski
     getTotalWarung();
     getTotalTransaksi();
     populateWarungCards();
