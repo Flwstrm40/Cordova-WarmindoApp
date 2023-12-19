@@ -73,7 +73,7 @@ document.getElementById('inputForm').addEventListener('submit', function (event)
 
 
     console.log('Data role:', roleDataResponse);
-    const existingRoleId = roleDataResponse.find(role => role.i_id=== idrole);
+    const existingRoleId = roleDataResponse.find(role => role.id_role=== idrole);
     if (existingRoleId) {
         alert("ID Role sudah ada. Mohon gunakan yang lain.");
         return;
